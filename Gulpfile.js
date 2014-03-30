@@ -11,7 +11,9 @@ var out = './out/';
 
 gulp.task('default', function () {
 	gulp.src('./src/index.js')
-		.pipe(traceur())
+		.pipe(traceur({
+			experimental: true
+		}))
 		.pipe(browserify())
 		.pipe(gulp.dest(out));
 });
