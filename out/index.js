@@ -245,7 +245,7 @@ function viewMenuItemOptions(restaurant, item) {
   MenuItemOptions.load(restaurant, item, function(err, options) {
     $('.items').replaceWith($('<section>').addClass('items').addClass('drag').append($('<div>').addClass('pad').append($('<h1>').text('Order options')).append($('<p>').text('Swipe right to add, left to remove.'))).append($('<div>').addClass('content-items').append(options.map(function(opt) {
       return opt.$el;
-    }))).append($('<a>').addClass('button center').text('Save Order!')));
+    }))).append($('<a>').attr('href', 'confirm.html').addClass('button center').text('Save Order!')));
     refreshView();
   });
 }

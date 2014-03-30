@@ -64,6 +64,7 @@ function viewMenuItemOptions(restaurant, item) {
 					}))
 				)
 				.append($('<a>')
+					.attr('href', 'confirm.html')
 					.addClass('button center')
 					.text('Save Order!')
 				)
