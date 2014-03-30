@@ -121,7 +121,8 @@ module.exports = (function () {
 							144: {
 								name: 'Texas Toast',
 								type: 'Integer',
-								default: 1
+								default: 1,
+								picture_url: 'toast.jpg'
 							},
 							149: {
 								name: 'Soda',
