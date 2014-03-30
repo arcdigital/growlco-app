@@ -24,7 +24,8 @@ module.exports = (function () {
 							93: {
 								name: 'Fries',
 								type: 'Boolean',
-								default: 'Y'
+								default: 'Y',
+								picture_url: 'fries.png'
 							},
 							128: {
 								name: 'Coleslaw',
@@ -32,11 +33,11 @@ module.exports = (function () {
 								default: 'Y',
 								picture_url: 'coleslaw.png'
 							},
-							136: {
+							/*136: {
 								name: 'Cane\'s Sauce',
 								type: 'Integer',
 								default: 1
-							},
+							},*/
 							144: {
 								name: 'Texas Toast',
 								type: 'Integer',
