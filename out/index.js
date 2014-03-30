@@ -379,6 +379,7 @@ var TypeClasses = {
 function MenuItemOption(restaurant, menuitem, option) {
 	extend(this, option);
 
+console.log(option);
 	this.$el = $('<a>')
 		//.attr('href', '#')
 		.attr('data-id', option.id)
