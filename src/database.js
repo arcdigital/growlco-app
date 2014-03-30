@@ -12,24 +12,8 @@ module.exports = (function () {
 				description: 'Delicious chicken made with love.',
 				menuitems: {
 					1: {
-						name: '3finger',
-						picture_url: '3finger.png',
-						description: 'The perfect 3 finger stuff'
-					},
-					32: {
-						name: 'Caniac Combo',
-						picture_url: 'caniaccombo.png',
-						description: 'The Perfect Caniac Combo'
-					},
-					51: {
-						name: 'Sandwich Box',
-						picture_url: 'sandwichcombo.png',
-						description: 'Sandwich Box shit'
-					},
-					54: {
-						name: 'The Box',
+						name: 'The Box Combo',
 						picture_url: 'thebox.png',
-						description: 'The perfect box',
 						options: {
 							17: {
 								name: 'Chicken Fingers',
@@ -40,7 +24,8 @@ module.exports = (function () {
 							93: {
 								name: 'Fries',
 								type: 'Boolean',
-								default: 'Y'
+								default: 'Y',
+								picture_url: 'fries.png'
 							},
 							128: {
 								name: 'Coleslaw',
@@ -48,15 +33,16 @@ module.exports = (function () {
 								default: 'Y',
 								picture_url: 'coleslaw.png'
 							},
-							136: {
+							/*136: {
 								name: 'Cane\'s Sauce',
 								type: 'Integer',
 								default: 1
-							},
+							},*/
 							144: {
 								name: 'Texas Toast',
 								type: 'Integer',
-								default: 1
+								default: 1,
+								picture_url: 'toast.jpg'
 							},
 							149: {
 								name: 'Soda',
@@ -65,6 +51,21 @@ module.exports = (function () {
 								picture_url: 'soda.png'
 							}
 						}
+					},
+					32: {
+						name: 'The 3 Finger Combo',
+						picture_url: '3finger.png',
+						//description: 'The perfect 3 finger stuff'
+					},
+					51: {
+						name: 'The Caniac Combo',
+						picture_url: 'caniaccombo.png',
+						//description: 'The Perfect Caniac Combo'
+					},
+					54: {
+						name: 'The Sandwich Combo',
+						picture_url: 'sandwichcombo.png',
+						//description: 'Sandwich Box shit'
 					}
 				}
 			},
@@ -77,6 +78,16 @@ module.exports = (function () {
 				name: 'Chipotle Mexican Grill',
 				picture_url: 'chipotle.png',
 				description: 'It\'s not really Mexican food.'
+			},
+			244: {
+				name: 'Jimmy Johns',
+				picture_url: 'jimmyjohns.png',
+				description: 'The best gormet sandwiches.'
+			},
+			394: {
+				name: 'Domino\'s Pizza',
+				picture_url: 'dominoes.png',
+				description: 'The best pizza in the world.'
 			}
 		}
 	};
