@@ -1,17 +1,5 @@
 function refreshView() {
 
-  $('.js-menu-trigger').on('click touchstart', function(e){
-    $('.js-menu').toggleClass('is-visible');
-    $('.js-menu-screen').toggleClass('is-visible');
-    e.preventDefault();
-  });
-
-  $('.js-menu-screen').on('click touchstart', function(e){
-    $('.js-menu').toggleClass('is-visible');
-    $('.js-menu-screen').toggleClass('is-visible');
-    e.preventDefault();
-  });
-
   $(".drag.items a").dragend();
 
   $('.drag.items a').cjSwipe('on', function(swipedRight) {
@@ -73,4 +61,18 @@ function refreshView() {
   });
 }
 
-$(document).ready(refreshView);
+$(document).ready(function () {
+  $('.js-menu-trigger').on('click touchstart', function(e){
+    $('.js-menu').toggleClass('is-visible');
+    $('.js-menu-screen').toggleClass('is-visible');
+    e.preventDefault();
+  });
+
+  $('.js-menu-screen').on('click touchstart', function(e){
+    $('.js-menu').toggleClass('is-visible');
+    $('.js-menu-screen').toggleClass('is-visible');
+    e.preventDefault();
+  });
+
+  refreshView()
+});
