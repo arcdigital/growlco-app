@@ -165,7 +165,7 @@ module.exports = (function () {
 				description: 'The best gormet sandwiches.'
 			},
 			394: {
-				name: 'Dominoe\'s Pizza',
+				name: 'Domino\'s Pizza',
 				picture_url: 'dominoes.png',
 				description: 'The best pizza in the world.'
 			}
