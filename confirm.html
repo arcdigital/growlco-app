@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Growl</title>
+	<link rel="stylesheet" href="css/main.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+
+	<!-- Run in full-screen mode. -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!-- Make the status bar black with white text. -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<!-- Customize home screen title. -->
+	<meta name="apple-mobile-web-app-title" content="Growl">
+
+	<style>
+		.row { overflow: hidden; }
+		.lefthalf { float: left; width: 50%; padding-top: 10px; }
+		.righthalf { float: left; width: 50%; }
+		.righthalf img { max-width: 100%; }
+		section .item {  margin: 0 !important;}
+		section p { margin-bottom: 0 !important; }
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<header>
+			<div class="logo">
+				<a href="index.html">Growl</a>
+			</div>
+			<nav class="options">
+				<a class="js-menu-trigger menu-anchor">MENU</a>
+			</nav>
+		</header>
+		<section class="pad review">
+			<div class="row">
+				<div class="lefthalf">
+					<h1>Order Review</h1>
+					<p><strong>The Box</strong></p>
+				</div>
+				<div class="righthalf">
+					<img src="img/restaurants/menuitems/thebox.png" alt="Box">
+				</div>
+			</div>
+		</section>
+		<hr>
+		<section>
+			<p class="item"><strong>1</strong> Chicken Fingers Order</p>
+			<p class="item"><strong>1</strong> Fries</p>
+			<p class="item"><strong>1</strong> Coleslaw</p>
+			<p class="item"><strong>1</strong> Cane's Sauce</p>
+			<p class="item"><strong>2</strong> Texas Toast</p>
+			<p class="item"><strong>1</strong> Soda</p>
+		</section>
+
+				<a href="#" class="button center">Submit Order!</a>
+	</div>
+	<nav class="js-menu sliding-menu-content">
+	  <ul>
+	  	<li><a href="index.html">Home</a></li>
+		<li><a href="login.html">Login</a></li>
+		<li><a href="register.html">Register</a></li>
+	  </ul>
+	</nav>
+	<div class="js-menu-screen menu-screen"></div>
+
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="js/swipe.js"></script>
+	<script src="js/swipecheck.js"></script>
+	<script src="js/color.js"></script>
+	<script src="js/main.js"></script>
+	<script src="./out/index.js"></script>
+</body>
+</html>
