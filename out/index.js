@@ -158,6 +158,16 @@ module.exports = (function () {
 				name: 'Chipotle Mexican Grill',
 				picture_url: 'chipotle.png',
 				description: 'It\'s not really Mexican food.'
+			},
+			244: {
+				name: 'Jimmy Johns',
+				picture_url: 'jimmyjohns.png',
+				description: 'The best gormet sandwiches.'
+			},
+			394: {
+				name: 'Dominoe\'s Pizza',
+				picture_url: 'dominoes.png',
+				description: 'The best pizza in the world.'
 			}
 		}
 	};
