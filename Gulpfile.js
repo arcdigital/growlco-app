@@ -1,24 +1,17 @@
-var gulp    = require('gulp');
-var plumber = require('gulp-plumber');
-var traceur = require('gulp-traceur');
-var watch   = require('gulp-watch');
+var gulp       = require('gulp');
+var browserify = require('gulp-browserify');
+var concat     = require('gulp-concat');
+var plumber    = require('gulp-plumber');
+var traceur    = require('gulp-traceur');
+var watch      = require('gulp-watch');
 
 var sources = ['./src/**/*.js'];
-var runtime = './node_modules/gulp-traceur/node_modules/'
-            + 'traceur/bin/traceur-runtime.js';
 //var tests  = ['./test/**/*.js'];
 var out = './out/';
 
 gulp.task('default', function () {
-	gulp.src(sources)
-		.pipe(watch(function (files) {
-			return files
-				.pipe(plumber())
-				.pipe(traceur({
-					experimental: true
-				}))
-				.pipe(gulp.dest(out));
-		}));
-	gulp.src(runtime)
+	gulp.src('./src/index.js')
+		.pipe(traceur())
+		.pipe(browserify())
 		.pipe(gulp.dest(out));
 });
