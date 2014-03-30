@@ -93,24 +93,8 @@ module.exports = (function () {
 				description: 'Delicious chicken made with love.',
 				menuitems: {
 					1: {
-						name: '3finger',
-						picture_url: '3finger.png',
-						description: 'The perfect 3 finger stuff'
-					},
-					32: {
-						name: 'Caniac Combo',
-						picture_url: 'caniaccombo.png',
-						description: 'The Perfect Caniac Combo'
-					},
-					51: {
-						name: 'Sandwich Box',
-						picture_url: 'sandwichcombo.png',
-						description: 'Sandwich Box shit'
-					},
-					54: {
-						name: 'The Box',
+						name: 'The Box Combo',
 						picture_url: 'thebox.png',
-						description: 'The perfect box',
 						options: {
 							17: {
 								name: 'Chicken Fingers',
@@ -146,6 +130,21 @@ module.exports = (function () {
 								picture_url: 'soda.png'
 							}
 						}
+					},
+					32: {
+						name: 'The 3 Finger Combo',
+						picture_url: '3finger.png',
+						//description: 'The perfect 3 finger stuff'
+					},
+					51: {
+						name: 'The Caniac Combo',
+						picture_url: 'caniaccombo.png',
+						//description: 'The Perfect Caniac Combo'
+					},
+					54: {
+						name: 'The Sandwich Combo',
+						picture_url: 'sandwichcombo.png',
+						//description: 'Sandwich Box shit'
 					}
 				}
 			},
@@ -314,7 +313,7 @@ function MenuItem(r) {
 			.append($('<div>')
 				.addClass('info')
 				.append($('<h2>').text(r.name))
-				.append($('<p>').text(r.description))
+				.append($('<p>').text(r.description || ''))
 			)
 		);
 
@@ -484,7 +483,7 @@ function Restaurant(r) {
 			.append($('<div>')
 				.addClass('info')
 				.append($('<h2>').text(r.name))
-				//.append($('<p>').text(r.description))
+				.append($('<p>').text(r.description))
 			)
 		);
 
