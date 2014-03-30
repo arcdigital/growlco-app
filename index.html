@@ -5,30 +5,43 @@
 	<link rel="stylesheet" href="css/main.css">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+
+	<!-- Run in full-screen mode. -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!-- Make the status bar black with white text. -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<!-- Customize home screen title. -->
+	<meta name="apple-mobile-web-app-title" content="Growl">
+
 </head>
 <body>
 	<div class="container">
 		<header>
 			<div class="logo">
-				<a href="index.php">Growl</a>
+				<a href="index.html">Growl</a>
 			</div>
 			<nav class="options">
-				<a href="#">+</a>
-				<a class="js-menu-trigger menu-anchor">&#9776;</a>
+				<a class="js-menu-trigger menu-anchor">MENU</a>
 			</nav>
 		</header>
-		<section class="restaurants">
+		<section class="items">
 		</section>
 	</div>
 	<nav class="js-menu sliding-menu-content">
 	  <ul>
-	    <li><a href="login.php">Login</a></li>
-	    <li><a href="register.php">Register</a></li>
+	  	<li><a href="index.html">Home</a></li>
+		<li><a href="login.html">Login</a></li>
+		<li><a href="register.html">Register</a></li>
 	  </ul>
 	</nav>
 	<div class="js-menu-screen menu-screen"></div>
 
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="js/swipe.js"></script>
+	<script src="js/swipecheck.js"></script>
+	<script src="js/color.js"></script>
 	<script src="js/main.js"></script>
 	<script src="./out/index.js"></script>
 </body>

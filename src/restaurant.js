@@ -44,7 +44,7 @@ function Restaurant(r) {
 		.attr('href', '#')
 		.attr('data-id', r.id)
 		.append($('<div>')
-			.addClass('restaurant')
+			.addClass('item')
 			.append($('<div>')
 				.addClass('logo')
 				.append($('<img>')
@@ -57,7 +57,7 @@ function Restaurant(r) {
 			.append($('<div>')
 				.addClass('info')
 				.append($('<h2>').text(r.name))
-				.append($('<p>').text(r.description))
+				//.append($('<p>').text(r.description))
 			)
 		);
 

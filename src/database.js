@@ -34,15 +34,19 @@ module.exports = (function () {
 							17: {
 								name: 'Chicken Fingers',
 								type: 'Integer',
-								default: 4
+								default: 4,
+								picture_url: 'chicken.png'
 							},
 							93: {
 								name: 'Fries',
-								type: 'Integer'
+								type: 'Boolean',
+								default: 'Y'
 							},
 							128: {
 								name: 'Coleslaw',
-								type: 'Boolean'
+								type: 'Boolean',
+								default: 'Y',
+								picture_url: 'coleslaw.png'
 							},
 							136: {
 								name: 'Cane\'s Sauce',
@@ -53,6 +57,12 @@ module.exports = (function () {
 								name: 'Texas Toast',
 								type: 'Integer',
 								default: 1
+							},
+							149: {
+								name: 'Soda',
+								type: 'Boolean',
+								default: 'Y',
+								picture_url: 'soda.png'
 							}
 						}
 					}

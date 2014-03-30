@@ -14,31 +14,62 @@ var { Restaurant, Restaurants } = require('./restaurant');
 var { MenuItem, MenuItems } = require('./menuitem');
 var { MenuItemOption, MenuItemOptions } = require('./menuitemoption');
 
-Restaurants.load(function (err, rs) {
-	$('.restaurants')
-		.empty()
-		.attr('data-controller', 'Restaurants')
-		.append(rs.map(function (r) {
-			return r.$el.click(function () {
-				MenuItems.load(r, function (err, items) {
-					$('.restaurants')
-						.empty()
-						.attr('data-controller', 'MenuItems')
-						.append(items.map(function (item) {
-							return item.$el.click(function () {
-								MenuItemOptions.load(r, item, function (err, options) {
-									$('.restaurants')
-										.empty()
-										.attr('data-contoller', 'MenuItemOptions')
-										.append(options.map(function (opt) {
-											return opt.$el;
-										}));
-								});
-							});
-						}));
-				});
-			});
-		}));
-});
+function viewRestaurants() {
+	Restaurants.load(function (err, restaurants) {
+		$('.items').replaceWith(
+			$('<section>')
+				.addClass('items')
+				.append(restaurants.map(function (restaurant) {
+					return restaurant.$el.click(function () {
+						viewMenuItems(restaurant);
+					});
+				}))
+		);
+		refreshView();
+	});
+}
 
+function viewMenuItems(restaurant) {
+	MenuItems.load(restaurant, function (err, items) {
+		$('.items').replaceWith(
+			$('<section>')
+				.addClass('items')
+				.append(items.map(function (item) {
+					return item.$el.click(function () {
+						viewMenuItemOptions(restaurant, item);
+					});
+				}))
+		);
+		refreshView();
+	});
+}
 
+function viewMenuItemOptions(restaurant, item) {
+	MenuItemOptions.load(restaurant, item, function (err, options) {
+		$('.items').replaceWith(
+			$('<section>')
+				.addClass('items')
+				.addClass('drag')
+				.append($('<div>')
+					.addClass('pad')
+					.append($('<h1>')
+						.text('Order options')
+					).append($('<p>')
+						.text('Swipe right to add, left to remove.')
+					)
+				).append($('<div>')
+					.addClass('content-items')
+					.append(options.map(function (opt) {
+						return opt.$el;
+					}))
+				)
+				.append($('<a>')
+					.addClass('button center')
+					.text('Save Order!')
+				)
+		);
+		refreshView();
+	});
+}
+
+viewRestaurants();

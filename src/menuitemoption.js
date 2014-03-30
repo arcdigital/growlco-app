@@ -33,7 +33,7 @@ var MenuItemOptions = (function () {
 				clear();
 
 				cb(err, err ? null : data.map(function (el) {
-					var option = new MenuItemOption(el);
+					var option = new MenuItemOption(restaurant, menuitem, el);
 					MenuItemOptions.set(option.id, option);
 					return option;
 				}));
@@ -43,27 +43,47 @@ var MenuItemOptions = (function () {
 
 }());
 
-function MenuItemOption(option) {
+var TypeClasses = {
+	'Boolean': ['yn', 'yn'],
+	'Integer': ['amount', 'quantity']
+};
+
+function MenuItemOption(restaurant, menuitem, option) {
 	extend(this, option);
 
 	this.$el = $('<a>')
-		.attr('href', '#')
+		//.attr('href', '#')
 		.attr('data-id', option.id)
+		.addClass(TypeClasses[option.type][0])
 		.append($('<div>')
-			.addClass('restaurant')
+			.addClass('item')
+			.addClass('dragend-page')
 			.append($('<div>')
 				.addClass('logo')
 				.append($('<img>')
 					.attr({
-						src: 'img/restaurants/menuitems/' + option.picture_url,
+						src: [
+							'img',
+							'restaurants',
+							restaurant.id,
+							'menuitems',
+							menuitem.id,
+							'options',
+							option.picture_url
+						].join('/'),
 						alt: option.name
 					})
 				)
 			)
 			.append($('<div>')
 				.addClass('info')
-				.append($('<h2>').text(option.name))
-				.append($('<p>').text(option.description))
+				.append($('<h2>')
+					.text(option.name)
+					.append($('<span>')
+						.addClass(TypeClasses[option.type][1])
+						.text(option.default)
+					)
+				)
 			)
 		);
 

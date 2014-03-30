@@ -45,10 +45,10 @@ function MenuItem(r) {
 	extend(this, r);
 
 	this.$el = $('<a>')
-		.attr('href', '#')
+		//.attr('href', '#')
 		.attr('data-id', r.id)
 		.append($('<div>')
-			.addClass('restaurant')
+			.addClass('item')
 			.append($('<div>')
 				.addClass('logo')
 				.append($('<img>')

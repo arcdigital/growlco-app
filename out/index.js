@@ -115,15 +115,19 @@ module.exports = (function () {
 							17: {
 								name: 'Chicken Fingers',
 								type: 'Integer',
-								default: 4
+								default: 4,
+								picture_url: 'chicken.png'
 							},
 							93: {
 								name: 'Fries',
-								type: 'Integer'
+								type: 'Boolean',
+								default: 'Y'
 							},
 							128: {
 								name: 'Coleslaw',
-								type: 'Boolean'
+								type: 'Boolean',
+								default: 'Y',
+								picture_url: 'coleslaw.png'
 							},
 							136: {
 								name: 'Cane\'s Sauce',
@@ -134,6 +138,12 @@ module.exports = (function () {
 								name: 'Texas Toast',
 								type: 'Integer',
 								default: 1
+							},
+							149: {
+								name: 'Soda',
+								type: 'Boolean',
+								default: 'Y',
+								picture_url: 'soda.png'
 							}
 						}
 					}
@@ -200,23 +210,35 @@ var $__0 = require('./menuitem'),
 var $__0 = require('./menuitemoption'),
     MenuItemOption = $__0.MenuItemOption,
     MenuItemOptions = $__0.MenuItemOptions;
-Restaurants.load(function(err, rs) {
-  $('.restaurants').empty().attr('data-controller', 'Restaurants').append(rs.map(function(r) {
-    return r.$el.click(function() {
-      MenuItems.load(r, function(err, items) {
-        $('.restaurants').empty().attr('data-controller', 'MenuItems').append(items.map(function(item) {
-          return item.$el.click(function() {
-            MenuItemOptions.load(r, item, function(err, options) {
-              $('.restaurants').empty().attr('data-contoller', 'MenuItemOptions').append(options.map(function(opt) {
-                return opt.$el;
-              }));
-            });
-          });
-        }));
+function viewRestaurants() {
+  Restaurants.load(function(err, restaurants) {
+    $('.items').replaceWith($('<section>').addClass('items').append(restaurants.map(function(restaurant) {
+      return restaurant.$el.click(function() {
+        viewMenuItems(restaurant);
       });
-    });
-  }));
-});
+    })));
+    refreshView();
+  });
+}
+function viewMenuItems(restaurant) {
+  MenuItems.load(restaurant, function(err, items) {
+    $('.items').replaceWith($('<section>').addClass('items').append(items.map(function(item) {
+      return item.$el.click(function() {
+        viewMenuItemOptions(restaurant, item);
+      });
+    })));
+    refreshView();
+  });
+}
+function viewMenuItemOptions(restaurant, item) {
+  MenuItemOptions.load(restaurant, item, function(err, options) {
+    $('.items').replaceWith($('<section>').addClass('items').addClass('drag').append($('<div>').addClass('pad').append($('<h1>').text('Order options')).append($('<p>').text('Swipe right to add, left to remove.'))).append($('<div>').addClass('content-items').append(options.map(function(opt) {
+      return opt.$el;
+    }))).append($('<a>').addClass('button center').text('Save Order!')));
+    refreshView();
+  });
+}
+viewRestaurants();
 
 },{"./menuitem":4,"./menuitemoption":5,"./restaurant":6,"extend":1}],4:[function(require,module,exports){
 'use strict';
@@ -266,10 +288,10 @@ function MenuItem(r) {
 	extend(this, r);
 
 	this.$el = $('<a>')
-		.attr('href', '#')
+		//.attr('href', '#')
 		.attr('data-id', r.id)
 		.append($('<div>')
-			.addClass('restaurant')
+			.addClass('item')
 			.append($('<div>')
 				.addClass('logo')
 				.append($('<img>')
@@ -330,7 +352,7 @@ var MenuItemOptions = (function () {
 				clear();
 
 				cb(err, err ? null : data.map(function (el) {
-					var option = new MenuItemOption(el);
+					var option = new MenuItemOption(restaurant, menuitem, el);
 					MenuItemOptions.set(option.id, option);
 					return option;
 				}));
@@ -340,27 +362,47 @@ var MenuItemOptions = (function () {
 
 }());
 
-function MenuItemOption(option) {
+var TypeClasses = {
+	'Boolean': ['yn', 'yn'],
+	'Integer': ['amount', 'quantity']
+};
+
+function MenuItemOption(restaurant, menuitem, option) {
 	extend(this, option);
 
 	this.$el = $('<a>')
-		.attr('href', '#')
+		//.attr('href', '#')
 		.attr('data-id', option.id)
+		.addClass(TypeClasses[option.type][0])
 		.append($('<div>')
-			.addClass('restaurant')
+			.addClass('item')
+			.addClass('dragend-page')
 			.append($('<div>')
 				.addClass('logo')
 				.append($('<img>')
 					.attr({
-						src: 'img/restaurants/menuitems/' + option.picture_url,
+						src: [
+							'img',
+							'restaurants',
+							restaurant.id,
+							'menuitems',
+							menuitem.id,
+							'options',
+							option.picture_url
+						].join('/'),
 						alt: option.name
 					})
 				)
 			)
 			.append($('<div>')
 				.addClass('info')
-				.append($('<h2>').text(option.name))
-				.append($('<p>').text(option.description))
+				.append($('<h2>')
+					.text(option.name)
+					.append($('<span>')
+						.addClass(TypeClasses[option.type][1])
+						.text(option.default)
+					)
+				)
 			)
 		);
 
@@ -419,7 +461,7 @@ function Restaurant(r) {
 		.attr('href', '#')
 		.attr('data-id', r.id)
 		.append($('<div>')
-			.addClass('restaurant')
+			.addClass('item')
 			.append($('<div>')
 				.addClass('logo')
 				.append($('<img>')
@@ -432,7 +474,7 @@ function Restaurant(r) {
 			.append($('<div>')
 				.addClass('info')
 				.append($('<h2>').text(r.name))
-				.append($('<p>').text(r.description))
+				//.append($('<p>').text(r.description))
 			)
 		);
 
